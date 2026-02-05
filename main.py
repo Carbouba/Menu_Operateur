@@ -16,7 +16,7 @@ tel que : le solde et le forfait actif.
 Ensuite il affiche le menu principal
 
  """
-retour = False
+
 
 # Menu principal (bouclé)
 while True:
@@ -43,4 +43,6 @@ while True:
         case _:
             print("❌ Erreur : Le chiffre doit être entre 1 et 3.")  
             continue
+
+# Rien a ajouter apres cette ligne
 
