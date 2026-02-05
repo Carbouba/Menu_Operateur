@@ -3,6 +3,7 @@ import fonctions as f
 
 
 
+
 # Programme principal
 
 """ 
@@ -15,12 +16,7 @@ tel que : le solde et le forfait actif.
 Ensuite il affiche le menu principal
 
  """
-
-# Infos solde 
-s_principal = 500
-s_internet = 0
-s_appelle = 0 
-
+retour = False
 
 # Menu principal (bouclé)
 while True:

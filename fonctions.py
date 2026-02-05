@@ -1,6 +1,7 @@
 import data as d
 
 
+
 def afficher_solde():
     print("\n===== VOTRE SOLDE =====\n")
     print(f"Principale : {d.s_principal} cfa")
@@ -23,7 +24,9 @@ def choix_forfait():
 
                 match choix:
                     case 1:
-                        f_internet()
+                        retour = f_internet()
+                        if retour == "MENU PRINCIPAL":
+                            return
                     case 2:
                         pass
                     case 3:
@@ -31,9 +34,6 @@ def choix_forfait():
                     case  _:
                         print("❌ Erreur : Le chiffre doit être entre 1 et 3.")  
                         continue
-
-            
-
 
 def f_internet():
     while True:
@@ -56,12 +56,11 @@ def f_internet():
             case 3:
                 choix_forfait()
             case 4:
-                break
+                return "MENU PRINCIPAL"
             case _:
                 print("❌ Erreur : Le chiffre doit être entre 1 et 4.")  
                 continue
 
-    
 def i_jour():
             while True:
                 print("\n===== FORFAIT JOUR =====\n")
@@ -79,7 +78,7 @@ def i_jour():
                     else:
                         d.s_internet +=  50
                         d.s_principal -= 100
-                        print(f"Félicitation, vous avez souscrit avec succés au forfait jour de 100F, votre solde internet est {d.s_internet} Mo, principal {d.s_principal} cfa.\n")
+                        print(f"Félicitation, vous avez souscrit avec succés au forfait jour de 100F, votre solde internet est {d.s_internet} Mo, solde principal {d.s_principal} cfa.\n")
                 
                 elif choix == 2:
                     if d.s_principal < 500:
@@ -87,7 +86,7 @@ def i_jour():
                     else:
                         d.s_internet +=  600
                         d.s_principal -= 500
-                        print(f"Félicitation, vous avez souscrit avec succés au forfait jour de 500F, votre solde internet est {d.s_internet} Mo, principal {d.s_principal} cfa.\n")
+                        print(f"Félicitation, vous avez souscrit avec succés au forfait jour de 500F, votre solde internet est {d.s_internet} Mo, solde principal {d.s_principal} cfa.\n")
                 
                 elif choix == 3:
                      f_internet()
@@ -98,10 +97,37 @@ def i_jour():
                 break
             return
 
-
-
 def i_semaine():
-            print("\n===== FORFAIT SEMAINE =====\n")
-            print("1. 600 Mo (500 F)")
-            print("2. 1 Go (1000 F)")
- 
+    while True:
+        print("\n===== FORFAIT SEMAINE =====\n")
+        print("1. 600 Mo (500 F)")
+        print("2. 1 Go (1000 F)")
+        print("3. Revenir")
+
+        try:
+            choix = int(input("\nVotre choix : "))
+        except ValueError:
+                print("\n❌ Erreur : Vous avez entré une LETTRE, veuillez entrer un CHIFFRE.")
+                continue
+        if choix == 1:
+            if d.s_principal < 500:
+                print("\n❌ Erreur : Votre solde est inssufisantt pour souscrire a cet forfait")
+            else:
+                d.s_internet += 600
+                d.s_principal -= 500
+                print(f"Félicitation, vous avez souscrit avec succés au forfait semaine de 500F, votre solde internet est {d.s_internet} Mo, solde principal {d.s_principal} cfa.\n")
+        
+        elif choix == 2:
+            if d.s_principal < 1000:
+                print("\n❌ Erreur : Votre solde est inssufisantt pour souscrire a cet forfait")
+            else:
+                d.s_internet += 1024
+                d.s_principal -= 1000
+                print(f"Félicitation, vous avez souscrit avec succés au forfait semaine de 500F, votre solde internet est {d.s_internet} Mo, solde principal {d.s_principal} cfa.\n")
+        
+        elif choix == 3:
+            f_internet()
+
+        else:
+            print("\n❌ Erreur : Le chiffre doit être entre 1 et 3.")
+            continue
