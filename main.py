@@ -43,6 +43,3 @@ while True:
         case _:
             print("❌ Erreur : Le chiffre doit être entre 1 et 3.")  
             continue
-
-# Rien a ajouter apres cette ligne
-
